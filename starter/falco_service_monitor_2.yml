@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: falco
+  namespace: falco
+  labels:
+    release: prometheus  # For Prometheus Operator discovery
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: falco  # Matches the Service’s labels      type: falco-metrics             # Optional but recommended
+  endpoints:
+    - port: metrics  # Matches the Service’s port name
+      path: /metrics
+      interval: 1m
