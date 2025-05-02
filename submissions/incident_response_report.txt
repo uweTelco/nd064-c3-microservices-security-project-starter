@@ -1,0 +1,19 @@
+Incident Response Report
+
+Incident Commander Name:
+Uwe Sülter
+
+Executive Summary:
+On 2025/05/02, a controlled security incident was introduced into our Kubernetes cluster as part of a security exercise. The incident involved the execution of a payload script that deployed containers running legacy Docker images designed for crypto mining activities. The purpose of this exercise was to simulate a potential real-world security threat and evaluate our detection and response capabilities using Falco.
+
+Summary of What Was Affected:
+The Kubernetes cluster was directly affected by the deployment of containers instantiated with the servethehome/monero_cpu_moneropool Docker image. These containers ran crypto mining software, consuming computational resources and potentially compromising the security integrity of the cluster due to their inherent vulnerabilities. The incident was isolated to the specific nodes running these containers, with no further spread or escalation observed.
+
+Summary of the Impact:
+The deployment of the crypto mining Docker images resulted in increased resource utilization on the affected nodes, potentially affecting the performance of legitimate workloads. Furthermore, the presence of containers with known vulnerabilities introduced risks related to insecure communication channels and lack of a software bill of materials, highlighting the importance of maintaining a secure container environment. However, due to the controlled nature of this exercise, the overall impact was limited and contained.
+
+Summary of the Remediation Steps:
+Upon detection, the suspicious containers were promptly identified and terminated to mitigate resource consumption and security risks. A thorough review of the Kubernetes cluster configuration and security policies was conducted to ensure compliance with best practices. Additionally, all systems within the environment were patched and updated to guard against potential exploitation of vulnerabilities present in the legacy Docker images.
+
+Summary of Lessons Learned:
+This exercise underscored the necessity of continuous monitoring and timely detection of anomalous activities within our Kubernetes infrastructure. It highlighted the importance of maintaining up-to-date systems and adhering to security best practices to mitigate risks associated with legacy software. Future training and drills will focus on improving incident response times and enhancing our detection capabilities to ensure robust defense against actual security threats.
